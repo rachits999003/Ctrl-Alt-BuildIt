@@ -17,33 +17,15 @@ class OllamaProvider(Provider):
             return []
 
     def generate(self, prompt: str, **kwargs) -> str:
-        # Best-effort: call Ollama's completions endpoint if available
-        model = kwargs.get("model")
-        payload = {"model": model, "prompt": prompt}
-        try:
-            resp = requests.post(f"{self.base_url}/v1/completions", json=payload, timeout=10)
-            resp.raise_for_status()
-            j = resp.json()
-            return j.get("choices", [{}])[0].get("text", "")
-        except Exception:
-            raise NotImplementedError()
+        raise NotImplementedError()
 
     def chat(self, messages: List[Dict[str, Any]], **kwargs) -> Dict[str, Any]:
-        # Best-effort Chat support — Ollama compatibility may vary.
-        model = kwargs.get("model")
-        payload = {"model": model, "messages": messages}
-        try:
-            resp = requests.post(f"{self.base_url}/v1/chat/completions", json=payload, timeout=15)
-            resp.raise_for_status()
-            return resp.json()
-        except Exception:
-            raise NotImplementedError()
+        raise NotImplementedError()
 
     def stream(self, prompt: str, **kwargs):
         raise NotImplementedError()
 
     def embeddings(self, texts: List[str], **kwargs) -> List[float]:
-        # Ollama may not support embeddings via this endpoint; raise to signal lack.
         raise NotImplementedError()
 
     def tool_calls(self, *args, **kwargs) -> Any:
