@@ -1,0 +1,6 @@
+{
+  "planning": "gemini_openai_compat",
+  "implementation": "local_ollama",
+  "testing": "local_ollama",
+  "default": "local_ollama"
+}
