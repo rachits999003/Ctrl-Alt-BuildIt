@@ -1,0 +1,12 @@
+{
+  "local_ollama": {
+    "type": "ollama",
+    "base_url": "http://127.0.0.1:11434"
+  },
+  "gemini_openai_compat": {
+    "type": "openai_compatible",
+    "base_url": "https://api.openai.example", 
+    "api_key": "",
+    "model": "gemini"
+  }
+}
